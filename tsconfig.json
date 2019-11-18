@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "target": "es5",
+    "sourceMap": true,
+    "typeRoots": ["./node_modules/@types"]
+  },
+  "include": [
+    "functions/skills/index.ts",
+  ],
+  "exclude": ["node_modules"]
+}

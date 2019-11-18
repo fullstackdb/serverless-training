@@ -1,0 +1,46 @@
+service: sls-training
+
+plugins:
+  - serverless-offline
+  - serverless-plugin-include-dependencies
+  - serverless-dotenv-plugin
+
+frameworkVersion: ">=1.21.0 <2.0.0"
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  region: us-east-1
+  environment:
+    APP_STATE: ${env:APP_STAGE, 'production'}
+    TABLE_SKILLS: ${env:TABLE_SKILLS, ssm:TABLE_SKILLS}
+
+package:
+  individually: true
+  exclude:
+    - ./**
+
+functions:
+  skills:
+    handler: dist/functions/skills/index.handler
+    events:
+      - http:
+          path: /skills
+          method: POST
+          cors: true
+      - http:
+          path: /skills/{any+}
+          method: POST
+          cors: true
+      - http:
+          path: /skills/{any+}
+          method: GET
+          cors: true
+    package:
+      individually: true
+      include:
+        - dist/functions/skills/**
+
+custom:
+  serverless-offline:
+    port: ${env:PORT}
