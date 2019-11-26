@@ -1,0 +1,9 @@
+name: website
+
+website:
+  component: '@serverless/website'
+  inputs:
+    domain: 
+    code:
+      src: dist
+      hook: npm run build

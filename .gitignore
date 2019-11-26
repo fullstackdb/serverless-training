@@ -13,6 +13,7 @@ serverless
 secrets.dev.js
 secrets.stage.js
 secrets.prod.js
+.cache
 
 dist
 .docz/
