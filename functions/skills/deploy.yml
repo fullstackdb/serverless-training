@@ -1,0 +1,19 @@
+skills:
+    handler: dist/functions/skills/index.handler
+    events:
+      - http:
+          path: /skills
+          method: POST
+          cors: true
+      - http:
+          path: /skills/{any+}
+          method: POST
+          cors: true
+      - http:
+          path: /skills/{any+}
+          method: GET
+          cors: true
+    package:
+      individually: true
+      include:
+        - dist/functions/skills/**
